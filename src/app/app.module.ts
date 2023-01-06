@@ -1,3 +1,5 @@
+import { ProfabricComponentsModule } from '@profabric/angular-components';
+//import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,7 +12,7 @@ import { HeaderComponent } from '@modules/main/header/header.component';
 import { FooterComponent } from '@modules/main/footer/footer.component';
 import { MenuSidebarComponent } from '@modules/main/menu-sidebar/menu-sidebar.component';
 import { BlankComponent } from '@pages/blank/blank.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProfileComponent } from '@pages/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from '@modules/register/register.component';
@@ -30,9 +32,13 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './store/auth/reducer';
 import { uiReducer } from './store/ui/reducer';
-import { ProfabricComponentsModule } from '@profabric/angular-components';
 import { defineCustomElements } from '@profabric/web-components/loader';
 import { SidebarSearchComponent } from './components/sidebar-search/sidebar-search.component';
+import { ListaClienteComponent } from './pages/cadastros/clientes/lista/lista.component';
+import { DadosClientesComponent } from './pages/cadastros/clientes/dados/dados.component';
+import { ColaboradorListaComponent } from './pages/cadastros/colaboradores/colaborador-lista/colaborador-lista.component';
+import { ColaboradorDadosComponent } from './pages/cadastros/colaboradores/colaborador-dados/colaborador-dados.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 defineCustomElements();
 registerLocaleData(localeEn, 'en-EN');
@@ -57,7 +63,10 @@ registerLocaleData(localeEn, 'en-EN');
     MainMenuComponent,
     SubMenuComponent,
     MenuItemComponent,
-    SidebarSearchComponent
+    SidebarSearchComponent,
+    ListaClienteComponent,
+    ColaboradorListaComponent,
+    ColaboradorDadosComponent
   ],
   imports: [
     BrowserModule,
@@ -71,9 +80,12 @@ registerLocaleData(localeEn, 'en-EN');
       positionClass: 'toast-top-right',
       preventDuplicates: true
     }),
+    FormsModule,
+    NgbModule,
     ProfabricComponentsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DadosClientesComponent]
 })
 export class AppModule { }
